@@ -1,55 +1,22 @@
-public class RandomArt {
-    public static void main(String[] args) throws InterruptedException {
-        final int rows = 20;
-        final int cols = 60;
-        char[][] grid = new char[rows][cols];
-        // Fyll rutenettet med mellomrom
-        for (int r = 0; r < rows; r++) {
-            for (int c = 0; c < cols; c++) {
-                grid[r][c] = ' ';
-            }
-        }
+<html lang="no">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Schoolport - Admin</title>
 
-        int x = rows / 2;
-        int y = cols / 2;
-        String brushes = "*.+o@#%";
-        java.util.Random rand = new java.util.Random();
-
-        for (int step = 0; step < 1000; step++) {
-            // Plasser et tilfeldig "pensel"-tegn der vi er
-            grid[x][y] = brushes.charAt(rand.nextInt(brushes.length()));
-
-            // Flytt i en tilfeldig retning (inkluder diagonaler)
-            int dx = rand.nextInt(3) - 1; // -1, 0 eller 1
-            int dy = rand.nextInt(3) - 1;
-            x = Math.max(0, Math.min(rows - 1, x + dx));
-            y = Math.max(0, Math.min(cols - 1, y + dy));
-
-            // Av og til «rydd» litt (fjern noen tegn) for variasjon
-            if (rand.nextDouble() < 0.02) {
-                for (int i = 0; i < 5; i++) {
-                    int rx = rand.nextInt(rows);
-                    int ry = rand.nextInt(cols);
-                    grid[rx][ry] = ' ';
-                }
-            }
-
-            // Tegn rutenettet i konsollen
-            StringBuilder sb = new StringBuilder();
-            sb.append("\u001b[H\u001b[2J"); // ANSI escape: clear screen (fungerer i mange terminaler)
-            for (int r = 0; r < rows; r++) {
-                for (int c = 0; c < cols; c++) {
-                    sb.append(grid[r][c]);
-                }
-                sb.append('\n');
-            }
-            System.out.print(sb.toString());
-
-            // Litt pause så du ser animasjonen
-            Thread.sleep(30);
-        }
-
-        // Skriv sluttbilde
-        System.out.println("\nFerdig! Takk for å se på det tilfeldige mønsteret 😊");
-    }
-}
+</head>
+<body>
+    <header class="topbar">
+    <h1>Schoolport - Admin </h1>
+    <button id="logoutBtn">Logg Ut</button>
+    </header>
+</body>
+<nav class="sidebar">
+    <ul>
+        <li class="active" data-section="dashboard">Menu</li>
+        <li class-section="students">Students</li>
+        <li class-section="students">Courses</li>
+        <li class-section="students">Exams</li>
+        <li class-section="students">Reports</li>
+    </ul>
+</nav>
